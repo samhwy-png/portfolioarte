@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Artista | Carrossel</title>
+    <style>
+       
+        /* ESTILO BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth !important; 
+        }
+
+
+        section {
+            scroll-margin-top: 80px; 
+        }
+
+
+        /* Menu Superior */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 30px 50px;
+            z-index: 1000;
+            background: transparent !important; 
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px; 
+        }
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+        .logo {
+            font-size: 18px; 
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: static !important;
+            transform: none !important; 
+        }
+
+
+    
+
+        /* SEÇÃO SOBRE MIM */
+        .sobre-mim { display: flex; min-height: 80vh; border-bottom: 1px solid #222; }
+        .sobre-bloco { width: 50%; padding: 80px; display: flex; flex-direction: column; justify-content: center; }
+       .pessoal, .lado-obra {
+    background-color: #000000 !important;
+    border-right: 1px solid #333 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+    .artistico, .lado-zoom {
+    background-color: #1a1a1a !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+       .sobre-mim h2, .sobre-mim h3, .info-obra h4 { color: #ffffff !important; }
+.sobre-mim p, .info-obra p { color: #cccccc !important; }
+
+
+        /* SEÇÃO DE CATEGORIAS */
+        .secao-categorias { padding: 100px 50px; text-align: center; background: #000; }
+        .grid-categorias { display: flex; justify-content: center; gap: 40px; margin-top: 50px; }
+        .capa-categoria { width: 450px; height: 550px; position: relative; cursor: pointer; overflow: hidden; border: 1px solid #222; }
+        .capa-categoria img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.8s; }
+        .capa-categoria:hover img { opacity: 1; transform: scale(1.05); }
+        .capa-categoria h3 { position: absolute; bottom: 30px; left: 30px; font-size: 28px; }
+
+
+        /* GALERIA DE OBRAS */
+        .colecao-container { display: none; background: #000; }
+        .obra-item { display: flex; height: 100vh; border-bottom: 1px solid #111; }
+        .lado-obra {
+    width: 50% !important;
+    height: 100vh !important;
+    background-color: #000000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+}
+
+
+.quadro-obra {
+    width: 70% !important;   
+    height: 60% !important; 
+    background: #111 !important;
+    border: 1px solid #333 !important;
+    margin-bottom: 20px !important;
+}
+
+
+/* LADO DIREITO (O ZOOM) */
+.lado-zoom {
+    width: 50% !important;
+    height: 100vh !important;
+    background-color: #1a1a1a !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important; 
+    padding: 80px 0 80px 0 !important;    
+}
+
+
+.quadro-zoom {
+    width: 80% !important;   
+    height: 80% !important;  
+    background: #080808 !important;
+    border: 1px solid #444 !important;
+    border-right: none !important; 
+}
+        .visivel { display: block !important; }
+       
+    </style>
+</head>
+<body>
+    <header style="position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 30px 50px; z-index: 1000; background: transparent !important;">
+   
+        <div class="logo" style="font-size: 18px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase;">
+            PORTFÓLIO
+        </div>
+
+
+        <nav class="nav-links">
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="colecoes.html">Coleções</a>
+           
+        </nav>
+    </header>
+
+
+    <section id="inicio" class="hero">
+        <div class="slide ativo" style="background-image: url(img/1.png)"></div>
+        <div class="slide" style="background-image: url(img/2.png)"></div>
+        <div class="slide" style="background-image: url(img/7.png)"></div>
+   
+    </section>
+
+    <!-- COLEÇÕES -->
+    <section id="colecoes" class="secao-categorias">
+        <h3>COLEÇÕES</h3>
+        <div class="grid-categorias">
+            <div class="capa-categoria" onclick="abrirObras('Pessoas')">
+                <img src="img/6.jpg">
+                <h3>IRREVERSÍVEL</h3>
+            </div>
+            <div class="capa-categoria" onclick="abrirObras('Insetos')">
+                <img src="img/3 - Copia (2).png">
+                <h3>ARTHROPODA</h3>
+            </div>
+        </div>
+    </section>
+
+
+       <!-- LISTA DE OBRAS -->
+    <div id="obras-lista" class="colecao-container">
+   
+    <div id="colecao-Pessoas" class="secao-interna" style="display: none;">
+        <div class="sobre-mim" style="border-top: 1px solid #222;">
+            <div class="sobre-bloco pessoal">
+                <h2 style="font-size: 40px; color: #fff;">IRREVERSÍVEL</h2>
+                <p></p>
+            </div>
+            <div class="sobre-bloco artistico">
+                 <h2></h2>
+   
+                <p style="margin-bottom: 20px;">
+                    As obras da coleção Irreversível foram feitas como um estudo de desenho semi-realista junto à adaptação ao meio digital. Por isso, algumas criações não apresentam a máxima qualidade de detalhamento e resolução, evidenciando o aparente processo de aprendizagem ao uso dessas ferramentas.
+                </p>
+
+
+                <p style="margin-bottom: 20px;">
+                    O estudo consiste na criação direta da obra, ou seja, sem rascunho ou line art, apenas observando as referências e colorindo o “papel” continuamente. Essa maneira de desenhar é imprevisível e não há certo ou errado, mas quando um traço é considerado “errado” quase não há uso de borracha, normalmente é adicionado mais cor ao desenho tentando reparar o “erro” e é isso que traz graça à ele. Sem esboço e traços auxiliares, a anatomia e expressões faciais podem não possuir um resultado natural, harmônico ou humanizado. Por isso, as mulheres desenhadas possuem um olhar etéreo, quase inexpressivo, incorporando o “erro” na construção da obra.
+                </p>
+
+
+                <p>
+                   
+                </p>
+            </div>
+        </div>
+       
+        <div class="obra-item"><div class="lado-obra"><div class="quadro-obra"><img src="img/2.png" style="width:100%; height:100%; object-fit:cover;"></div><div style="width:85%"><h4>Evanescence</h4><p style="color: #666;">Digital, 2023, Paint Tool Sai 2</p></div></div><div class="lado-zoom"><div class="quadro-zoom"><img src="img/2 - Copia.png" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+        <div class="obra-item"><div class="lado-obra"><div class="quadro-obra"><img src="img/7.png" style="width:100%; height:100%; object-fit:cover;"></div><div style="width:85%"><h4>Professora de Arte</h4><p style="color: #666;">Digital, 2023, Paint Tool Sai 2</p></div></div><div class="lado-zoom"><div class="quadro-zoom"><img src="img/livia amarelo e rosa - Copia.png" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+        <div class="obra-item"><div class="lado-obra"><div class="quadro-obra"><img src="img/NewCanvas1_____________.png" style="width:100%; height:100%; object-fit:cover;"></div><div style="width:85%"><h4>Rayssal</h4><p style="color: #666;">Digital, 2023, Paint Tool Sai 2</p></div></div><div class="lado-zoom"><div class="quadro-zoom"><img src="img/NewCanvas1_____________ - Copia.png" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+        <div class="obra-item"><div class="lado-obra"><div class="quadro-obra"><img src="img/5.jpeg" style="width:100%; height:100%; object-fit:cover;"></div><div style="width:85%"><h4>Sem Nome</h4><p style="color: #666;">Digital, 2022, Paint Tool Sai 2</p></div></div><div class="lado-zoom"><div class="quadro-zoom"><img src="img/5 - Copia (2).jpeg" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+        <div class="obra-item"><div class="lado-obra"><div class="quadro-obra"><img src="img/1.png" style="width:100%; height:100%; object-fit:cover;"></div><div style="width:85%"><h4>Fluido Não Identificado</h4><p style="color: #666;">Digital, 2021, Paint Tool Sai 2</p></div></div><div class="lado-zoom"><div class="quadro-zoom"><img src="img/1 - Copia.png" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+        <div class="obra-item"><div class="lado-obra"><div class="quadro-obra"><img src="img/6.jpg" style="width:100%; height:100%; object-fit:cover;"></div><div style="width:85%"><h4>Lagoa Verde</h4><p style="color: #666;">Digital, 2021, Paint Tool Sai 2</p></div></div><div class="lado-zoom"><div class="quadro-zoom"><img src="img/IMG_20260403_014217 - Copia (2).jpg" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+   
+    </div> <div id="colecao-Insetos" class="secao-interna" style="display: none;">
+        <div class="sobre-mim" style="border-top: 1px solid #222;">
+            <div class="sobre-bloco pessoal">
+                <h2 style="font-size: 40px; color: #fff;">ARTHROPODA</h2>
+                <p></p>
+            </div>
+            <div class="sobre-bloco artistico">
+                <h2></h2>
+   
+                <p style="margin-bottom: 20px;">
+                    As obras da coleção Arthropoda se iniciam como um estudo da estrutura corporal dos insetos, com enfoque em sua simetria bilateral. Assim, cada traço explora as variações da forma e como ela se configura idêntica em dois eixos, estabelecendo uma relação entre liberdade estética e equilíbrio na imagem.
+                </p>
+
+
+                <p style="margin-bottom: 20px;">
+                    Diferente da coleção Irreversível, esta coleção tem a line art como protagonista, sendo, até então, um método pouco recorrente em minha prática de desenho digital. Por isso, os insetos foram escolhidos para esse exercício, eles apresentam formas diversificadas e orgânicas, o que permite liberdade de experimentação gráfica e criativa. Além disso, as obras presentes nesta galeria atribuem a simetria como um guia para o desenvolvimento do traço, possibilitando a criação que varia entre as linhas mais leves e fluidas até às exageradas e grotescas, porém mantendo, ainda assim, a harmonia da imagem.  
+                </p>
+
+
+                <p>
+                    Inicialmente criadas para atender projetos específicos, essas obras, atualmente, são desenvolvidas a fim de ampliar minhas técnicas de desenho, para futuramente aplicá-las na ilustração de tatuagens
+                </p>
+            </div>
+        </div>
+
+
+        <div class="obra-item"><div class="lado-obra"><div class="quadro-obra"><img src="img/besouro zoom.png" style="width:100%; height:100%; object-fit:cover;"></div><div style="width:85%"><h4>Deus Khepri</h4><p style="color: #666;">Digital, 2025, Krita</p></div></div><div class="lado-zoom"><div class="quadro-zoom"><img src="img/besouro zoom de vdd (1).png" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+       
+        <div class="obra-item"><div class="lado-obra"><div class="quadro-obra"><img src="img/4.png" style="width:100%; height:100%; object-fit:cover;"></div><div style="width:85%"><h4>Eufriesea violacea</h4><p style="color: #666;">Digital, 2025, Krita</p></div></div><div class="lado-zoom"><div class="quadro-zoom"><img src="img/b.png" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+
+
+        <div class="obra-item"><div class="lado-obra"><div class="quadro-obra"><img src="img/7.jpeg" style="width:100%; height:100%; object-fit:cover;"></div><div style="width:85%"><h4>Lepidoptera</h4><p style="color: #666;">Digital, 2025, Krita</p></div></div><div class="lado-zoom"><div class="quadro-zoom"><img src="img/7 - Copia.jpeg" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+
+
+    </div> </div>
+     <footer style="text-align: center; padding: 40px; background: #000; border-top: 1px solid #111;">
+                <p style="font-size: 9px; color: #444; letter-spacing: 3px; text-transform: uppercase;">
+                    © 2026 Sophia Orsi Guimarães — Todos os direitos reservados
+                </p>
+            </footer>
+
+<script>
+       
+
+       function abrirObras(nome) {
+    const container = document.getElementById('obras-lista');
+    const colecaoEscolhida = document.getElementById('colecao-' + nome);
+    
+    
+    if (colecaoEscolhida.style.display === 'block') {
+        
+        colecaoEscolhida.style.display = 'none';
+        container.classList.remove('visivel');
+    } else {
+       
+        container.classList.add('visivel');
+        
+        
+        document.getElementById('colecao-Pessoas').style.display = 'none';
+        document.getElementById('colecao-Insetos').style.display = 'none';
+
+        
+        colecaoEscolhida.style.display = 'block';
+        
+        
+        setTimeout(() => {
+            colecaoEscolhida.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    }
+}
+    </script>
+
+</body>

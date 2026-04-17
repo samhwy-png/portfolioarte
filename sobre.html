@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Artista</title>
+    <style>
+       
+        /* ESTILO BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth !important; 
+        }
+
+
+        section {
+            scroll-margin-top: 80px; 
+        }
+
+
+        /* Menu Superior */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px; 
+            z-index: 1000;
+            background: transparent !important; 
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px; 
+        }
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+        .logo {
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: static !important; 
+            transform: none !important; 
+        }
+
+
+        
+        .hero {
+            height: 100vh; width: 100%; position: relative;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+        }
+
+
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; transition: opacity 1.5s ease-in-out;
+            z-index: 1;
+        }
+
+
+        .slide.ativo { opacity: 1; } 
+
+
+        
+        .overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); z-index: 2;
+        }
+
+
+        .btn-explorar {
+            position: relative; z-index: 3;
+            padding: 12px 35px; border: 1px solid #fff; background: transparent;
+            color: #fff; cursor: pointer; text-transform: uppercase; letter-spacing: 2px;
+        }
+
+
+        /* SEÇÃO SOBRE MIM */
+        .sobre-mim { display: flex; min-height: 80vh; border-bottom: 1px solid #222; }
+        .sobre-bloco { width: 50%; padding: 80px; display: flex; flex-direction: column; justify-content: center; }
+       .pessoal, .lado-obra {
+    background-color: #000000 !important;
+    border-right: 1px solid #333 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+    .artistico, .lado-zoom {
+    background-color: #1a1a1a !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+       .sobre-mim h2, .sobre-mim h3, .info-obra h4 { color: #ffffff !important; }
+.sobre-mim p, .info-obra p { color: #cccccc !important; }
+
+
+        /* SEÇÃO DE CATEGORIAS */
+        .secao-categorias { padding: 100px 50px; text-align: center; background: #000; }
+        .grid-categorias { display: flex; justify-content: center; gap: 40px; margin-top: 50px; }
+        .capa-categoria { width: 450px; height: 550px; position: relative; cursor: pointer; overflow: hidden; border: 1px solid #222; }
+        .capa-categoria img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.8s; }
+        .capa-categoria:hover img { opacity: 1; transform: scale(1.05); }
+        .capa-categoria h3 { position: absolute; bottom: 30px; left: 30px; font-size: 28px; }
+
+
+        /* GALERIA DE OBRAS */
+        .colecao-container { display: none; background: #000; }
+        .obra-item { display: flex; height: 100vh; border-bottom: 1px solid #111; }
+        .lado-obra {
+    width: 50% !important;
+    height: 100vh !important;
+    background-color: #000000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+}
+
+
+.quadro-obra {
+    width: 70% !important;  
+    height: 60% !important;  
+    background: #111 !important;
+    border: 1px solid #333 !important;
+    margin-bottom: 20px !important;
+}
+
+
+/* LADO DIREITO (O ZOOM) */
+.lado-zoom {
+    width: 50% !important;
+    height: 100vh !important;
+    background-color: #1a1a1a !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important; 
+    padding: 80px 0 80px 0 !important;    
+}
+
+
+.quadro-zoom {
+    width: 80% !important;   
+    height: 80% !important;  
+    background: #080808 !important;
+    border: 1px solid #444 !important;
+    border-right: none !important; 
+}
+        .visivel { display: block !important; }
+       
+    </style>
+</head>
+
+
+<body>
+<header style="position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 30px 50px; z-index: 1000; background: transparent !important;">
+   
+        <div class="logo" style="font-size: 18px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase;">
+            PORTFÓLIO
+        </div>
+
+
+        <nav class="nav-links">
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="colecoes.html">Coleções</a>
+           
+        </nav>
+    </header>
+
+<!-- SOBRE MIM -->    
+<section id="sobre" class="sobre-mim">
+        <div class="sobre-bloco pessoal">
+            <p style="letter-spacing: 12px; font-size: 13px; color: #fff; text-transform: uppercase; font-weight: 300; margin-bottom: 35px; border-bottom: 1px solid #222; padding-bottom: 15px; display: inline-block;">
+                SOPHIA ORSI GUIMARÃES
+            </p>
+
+
+            
+            <p style="margin-bottom: 15px;">Sou uma artista iniciante, que usa o desenho digital como principal meio de estudo e experimentação, desenho desde que me entendo por gente e estou em constante evolução, explorando e novas técnicas e formas. No desenho digital, comecei essa prática em 2019, iniciei com desenhos simples e cartunescos e, ao passar do tempo, fui incorporando luz e sombra, que permitiu meu desenvolvimento em profundidade e perspectiva.</p>
+            <p>O desenho sempre foi presente e necessário em toda a minha trajetória, ao longo do tempo, ele assume diferentes funções: desde uma prática natural até formas de estudo para realizar projetos. Atualmente, ele também não se classifica em apenas uma função, dependendo do momento pode ser uma forma de expressão, um design, experimentações, entre outros. Assim, o desenho é a base de todos os meus projetos.</p>
+        </div>
+
+
+        <div class="sobre-bloco artistico">
+            <div style="margin-top: 85px;">
+                
+                
+                <p style="margin-bottom: 15px;">As obras foram selecionadas e classificadas em coleções por apresentarem técnicas e visuais semelhantes. Todas as produções artísticas foram realizadas em meio digital e agrupadas por terem características em comum, como o processo criativo, tema da obra, construção da imagem e técnicas específicas. Sendo organizadas em ordem cronológica, partindo das obras mais recentes para as mais antigas, assim, é possível ver o desenvolvimento técnico e mudanças gráficas do meu estilo.</p>
+                <p>Em suma, as coleções descrevem meu progresso na arte digital enquanto artista iniciante. Evidenciando, tanto primeiras experiências com essa prática quanto explorações técnicas, deixando explícito meu processo de aprendizado e evolução no meio digital. </p>
+            </div>
+        </div>
+    </section>
+
+<section id="contato" class="sobre-mim" style="border-top: 1px solid #222; min-height: auto !important;">
+                <div class="sobre-bloco pessoal" style="background-color: #000 !important; padding: 40px 80px !important;">
+                    <h2 style="font-size: 24px; color: #fff; letter-spacing: 5px; text-transform: uppercase;">CONTATO</h2>
+                    <p style="font-size: 13px; margin-top: 10px; color: #888;"></p>
+                </div>
+   
+                <div class="sobre-bloco artistico" style="background-color: #1a1a1a !important; padding: 40px 80px !important;">
+                    <div style="display: flex; gap: 60px; flex-wrap: wrap;">
+                        <div>
+                            <span style="font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 5px;">E-mail</span>
+                            <p style="font-size: 14px; color: #ccc;">sorsiguimaraes@gmail.com</p>
+                        </div>
+
+
+                        <div>
+                            <span style="font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 5px;">Instagram</span>
+                            <p style="font-size: 14px; color: #ccc; line-height: 1.8;">
+                                @samhwy<br>
+                                @sophi.orsi
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<footer style="text-align: center; padding: 40px; background: #000; border-top: 1px solid #111;">
+                <p style="font-size: 9px; color: #444; letter-spacing: 3px; text-transform: uppercase;">
+                    © 2026 Sophia Orsi Guimarães — Todos os direitos reservados
+                </p>
+            </footer>
+
+</body>
